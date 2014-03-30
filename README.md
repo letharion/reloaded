@@ -3,7 +3,9 @@
 Tools for doing run-time code updating.
 Useful for continuously running PHP applications.
 
-Example using a React server:
+Example using a [React](https://github.com/reactphp/react) server:
+
+    <?php
 
     require 'vendor/autoload.php';
 
