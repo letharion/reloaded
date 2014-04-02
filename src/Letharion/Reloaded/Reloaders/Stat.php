@@ -16,7 +16,11 @@ class Stat {
   }
 
   public function reload() {
-    $file_stat = stat($this->path);
+    // On a busy system, it is likely that stating happens to coincide with a file write.
+    // Silence the error and skip the update this time; it will likely succeed next time.
+    if (!$file_stat = @stat($this->path)) {
+      return FALSE;
+    }
 
     $ret = $file_stat['mtime'] > $this->file_stat['mtime'];
 
